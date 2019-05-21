@@ -13,7 +13,7 @@ RST5.5:
 INTR_HANDLE:
 	MOV A,C
 	RRC
-	JC READ_MSB		; READ MSB WHEN READ COUNT IS ODD
+	JC READ_MSB		
 	JNZ READ_MSB
 
 READ_LSB:
@@ -36,7 +36,6 @@ READ_MSB:
 	MVI D,00H
 	MOV E,A		; D = 0, E = A
 	
-	; 16-BIT ADDITION IN H-L
 	DAD D
 	
 	DCR C
@@ -45,7 +44,7 @@ READ_MSB:
 	RET
 
 CALC_MEAN:
-	; SHIFT 4 BITS TO THE RIGHT
+	; Shifting 4 bits to the right
 
 	MOV A,H
 	RAR	
@@ -101,7 +100,7 @@ CALC_MEAN:
 	MOV H,A		
 	MOV A,L
 	RAR
-	MOV L,A
+	MOV L,A	; Result can be found in L register
 
-	HLT		; RESULT IN L
+	HLT		
 END	
